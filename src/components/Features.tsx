@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "motion/react";
-import { Award, Droplets, Shield, Compass } from "lucide-react";
+import { Award, Feather, HeartHandshake, Eye } from "lucide-react";
 
 interface FeatureCard {
   icon: React.ComponentType<any>;
@@ -11,23 +11,23 @@ interface FeatureCard {
 const FEATURE_ITEMS: FeatureCard[] = [
   {
     icon: Award,
-    title: "Premium Quality",
-    description: "Forged from heavy, lead-free virgin brass cores with flawless structural density to counter extreme variations."
+    title: "Artisanal Weaves",
+    description: "Handcrafted meticulously by generation-skilled master weavers utilizing authentic mulberry silk threads."
   },
   {
-    icon: Droplets,
-    title: "Water Efficient",
-    description: "Integrated with custom EcoSmart aerators that infuse water with oxygen, saving up to 40% consumption."
+    icon: Feather,
+    title: "Organic Dyes",
+    description: "Vibrant and gentle hues sourced organically from raw plants, botanical flowers, and natural extracts."
   },
   {
-    icon: Shield,
-    title: "Durable Finish",
-    description: "Multilayer Nickel and Chromium plating protecting our brassware from hard water corrosion and staining."
+    icon: HeartHandshake,
+    title: "Comfy Tailoring",
+    description: "Premium soft mulmul linings, tailored bust cushions, and functional deep hidden pockets on all outfits."
   },
   {
-    icon: Compass,
-    title: "Modern Design",
-    description: "Designed in sleek, architectural symmetry, honoring clean minimalist guidelines and timeless proportions."
+    icon: Eye,
+    title: "Pristine Cuts",
+    description: "Exquisite hand-turned scalloped hems, breathable panels, and timeless minimal silhouettes."
   }
 ];
 
@@ -41,15 +41,15 @@ export default function Features() {
           <div className="flex items-center justify-center space-x-2 mb-4">
             <div className="h-[1px] w-5 bg-brand-accent" />
             <span className="text-xs uppercase tracking-[0.25em] font-sans font-semibold text-brand-accent">
-              Engineering Excellence
+              Premium Craftsmanship
             </span>
             <div className="h-[1px] w-5 bg-brand-accent" />
           </div>
           <h2 className="font-serif text-3xl md:text-4xl lg:text-[42px] tracking-tight text-brand-text font-medium leading-tight">
-            Designed for Lifetime Service
+            Designed for Lifetime Elegance
           </h2>
           <p className="text-sm md:text-base text-brand-text-sec mt-4 font-light leading-relaxed">
-            Every fixture is rigorously checked across 20 high-pressure testing standards ensuring lifetime durability, visual luster, and tactile precision.
+            Every garment passes through rigorous handloom audits and structural dress checks, guaranteeing perfect drape integrity and exquisite softness.
           </p>
         </div>
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Search, Heart, ShoppingBag, Menu, X, ArrowRight } from "lucide-react";
-import { CartItem, Product } from "../types";
+import { Search, Heart, ShoppingBag, Menu, X, ArrowRight, Settings } from "lucide-react";
+import { CartItem, Product, SiteConfig } from "../types";
 
 interface HeaderProps {
   cart: CartItem[];
@@ -11,6 +11,10 @@ interface HeaderProps {
   onOpenWishlist: () => void;
   onSearchChange: (query: string) => void;
   onProductClick: (product: Product) => void;
+  siteConfig: SiteConfig;
+  activeTab: string;
+  onTabChange: (tab: string) => void;
+  onOpenAdmin: () => void;
 }
 
 export default function Header({
@@ -21,6 +25,10 @@ export default function Header({
   onOpenWishlist,
   onSearchChange,
   onProductClick,
+  siteConfig,
+  activeTab,
+  onTabChange,
+  onOpenAdmin,
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
@@ -82,25 +90,37 @@ export default function Header({
         {/* Desktop Left: Navigation */}
         <nav className="hidden md:flex items-center space-x-10 text-sm tracking-widest font-sans font-medium text-brand-text">
           <button
-            onClick={() => scrollToSection("product-collection")}
-            className="hover:text-brand-accent transition-colors duration-300 relative group uppercase"
+            onClick={() => onTabChange("home")}
+            className={`transition-colors duration-300 relative group uppercase ${
+              activeTab === "home" ? "text-brand-accent font-semibold" : "hover:text-brand-accent"
+            }`}
           >
-            Shop
-            <span className="absolute left-0 bottom-[-4px] w-0 h-[1.5px] bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
+            Home
+            <span className={`absolute left-0 bottom-[-4px] h-[1.5px] bg-brand-accent transition-all duration-300 ${
+              activeTab === "home" ? "w-full" : "w-0 group-hover:w-full"
+            }`}></span>
           </button>
           <button
-            onClick={() => scrollToSection("about-section")}
-            className="hover:text-brand-accent transition-colors duration-300 relative group uppercase"
+            onClick={() => onTabChange("products")}
+            className={`transition-colors duration-300 relative group uppercase ${
+              activeTab === "products" ? "text-brand-accent font-semibold" : "hover:text-brand-accent"
+            }`}
+          >
+            Products
+            <span className={`absolute left-0 bottom-[-4px] h-[1.5px] bg-brand-accent transition-all duration-300 ${
+              activeTab === "products" ? "w-full" : "w-0 group-hover:w-full"
+            }`}></span>
+          </button>
+          <button
+            onClick={() => onTabChange("about")}
+            className={`transition-colors duration-300 relative group uppercase ${
+              activeTab === "about" ? "text-brand-accent font-semibold" : "hover:text-brand-accent"
+            }`}
           >
             Craftsmanship
-            <span className="absolute left-0 bottom-[-4px] w-0 h-[1.5px] bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
-          </button>
-          <button
-            onClick={() => scrollToSection("testimonials-section")}
-            className="hover:text-brand-accent transition-colors duration-300 relative group uppercase"
-          >
-            Reviews
-            <span className="absolute left-0 bottom-[-4px] w-0 h-[1.5px] bg-brand-accent transition-all duration-300 group-hover:w-full"></span>
+            <span className={`absolute left-0 bottom-[-4px] h-[1.5px] bg-brand-accent transition-all duration-300 ${
+              activeTab === "about" ? "w-full" : "w-0 group-hover:w-full"
+            }`}></span>
           </button>
         </nav>
 
@@ -120,15 +140,16 @@ export default function Header({
         <div className="text-center">
           <button
             onClick={() => {
+              onTabChange("home");
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className="focus:outline-none"
           >
             <h1 className="font-serif text-2xl md:text-3xl tracking-widest text-brand-text font-semibold uppercase relative inline-block transition-transform duration-300 active:scale-95 leading-normal">
-              Vijay Marbles
+              {siteConfig.siteName}
             </h1>
-            <p className="text-[8px] tracking-[0.4em] text-brand-accent -mt-1 font-sans uppercase font-medium">
-              Timeless Hardware
+            <p className="text-[8px] tracking-[0.25em] text-brand-accent -mt-1 font-sans uppercase font-medium">
+              {siteConfig.tagline}
             </p>
           </button>
         </div>
@@ -299,34 +320,47 @@ export default function Header({
 
                 <div className="flex flex-col space-y-6">
                   <button
-                    onClick={() => scrollToSection("hero-banner")}
-                    className="text-left font-serif text-lg font-medium text-brand-text hover:text-brand-accent transition-colors"
+                    onClick={() => {
+                      onTabChange("home");
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`text-left font-serif text-lg font-medium transition-colors ${
+                      activeTab === "home" ? "text-brand-accent font-semibold" : "text-brand-text hover:text-brand-accent"
+                    }`}
                   >
                     Home
                   </button>
                   <button
-                    onClick={() => scrollToSection("product-collection")}
-                    className="text-left font-serif text-lg font-medium text-brand-text hover:text-brand-accent transition-colors"
+                    onClick={() => {
+                      onTabChange("products");
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`text-left font-serif text-lg font-medium transition-colors ${
+                      activeTab === "products" ? "text-brand-accent font-semibold" : "text-brand-text hover:text-brand-accent"
+                    }`}
                   >
-                    Browse Collections
+                    Browse Products
                   </button>
                   <button
-                    onClick={() => scrollToSection("about-section")}
-                    className="text-left font-serif text-lg font-medium text-brand-text hover:text-brand-accent transition-colors"
+                    onClick={() => {
+                      onTabChange("about");
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`text-left font-serif text-lg font-medium transition-colors ${
+                      activeTab === "about" ? "text-brand-accent font-semibold" : "text-brand-text hover:text-brand-accent"
+                    }`}
                   >
                     Our Craftsmanship
                   </button>
                   <button
-                    onClick={() => scrollToSection("features-grid")}
-                    className="text-left font-serif text-lg font-medium text-brand-text hover:text-brand-accent transition-colors"
+                    onClick={() => {
+                      onOpenAdmin();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="text-left font-serif text-lg font-medium text-brand-text hover:text-brand-accent transition-colors flex items-center space-x-2 border-t border-brand-border/40 pt-4 mt-2"
                   >
-                    Our Services
-                  </button>
-                  <button
-                    onClick={() => scrollToSection("testimonials-section")}
-                    className="text-left font-serif text-lg font-medium text-brand-text hover:text-brand-accent transition-colors"
-                  >
-                    Client Testimonials
+                    <Settings className="w-4.5 h-4.5 text-brand-accent animate-[spin_20s_linear_infinite]" />
+                    <span>Admin Controls</span>
                   </button>
                 </div>
               </div>

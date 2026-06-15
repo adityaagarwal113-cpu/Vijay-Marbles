@@ -1,14 +1,19 @@
 import { motion } from "motion/react";
-import { MessageSquareCode, Phone, Mail, Sparkles } from "lucide-react";
+import { Phone, Mail, Sparkles } from "lucide-react";
+import { SiteConfig } from "../types";
 
-export default function CTASection() {
+interface CTASectionProps {
+  siteConfig: SiteConfig;
+}
+
+export default function CTASection({ siteConfig }: CTASectionProps) {
   return (
     <section className="relative py-28 bg-[#2D2D2D] text-white overflow-hidden z-10 font-sans border-t border-brand-border/10">
       {/* Visual luxury overlay */}
-      <div className="absolute inset-0 opacity-15">
+      <div className="absolute inset-0 opacity-10">
         <img
-          src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=1200"
-          alt="Bathroom fittings background decorative"
+          src={siteConfig.aboutImage}
+          alt={`${siteConfig.siteName} Decorative craft backdrop`}
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover"
         />
@@ -28,32 +33,32 @@ export default function CTASection() {
 
         {/* Text Title */}
         <h2 className="font-serif text-3xl md:text-5xl font-medium tracking-tight mb-6 uppercase max-w-3xl mx-auto leading-tight">
-          Transform Your Home With Timeless Fixtures
+          Redefine Elegance with {siteConfig.siteName}
         </h2>
 
         {/* Subtitle */}
         <p className="text-sm md:text-base text-[#FAF7F2]/75 font-light leading-relaxed mb-10 max-w-2xl mx-auto">
-          Need a personalized architectural suite consultation? Speak with Alok Jain and our luxury fittings guides to customize faucets, showers, and accessories suited for your private home project.
+          Need a personalized brassware sizing or custom bathroom layout recommendation? Contact our luxury showroom experts to configure beautiful sanitary fittings suited for your modern luxury spaces.
         </p>
 
         {/* Interactive Contact Actions */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             id="cta-phone-btn"
-            href="tel:9229265644"
+            href={`tel:${siteConfig.contactPhone}`}
             className="flex items-center space-x-2.5 bg-brand-accent hover:bg-brand-accent-hover text-[#FAF7F2] text-xs font-semibold px-8 py-4 uppercase tracking-widest transition-all duration-300 rounded-sm shadow-md cursor-pointer hover:-translate-y-0.5"
           >
             <Phone className="w-4 h-4" />
-            <span>Call 9229265644</span>
+            <span>Call {siteConfig.contactPhone}</span>
           </a>
 
           <a
             id="cta-email-btn"
-            href="mailto:helloakjain03@gmail.com"
+            href={`mailto:${siteConfig.contactEmail}`}
             className="flex items-center space-x-2.5 bg-transparent hover:bg-white/10 border border-[#FAF7F2]/30 hover:border-brand-accent text-white hover:text-brand-accent text-xs font-semibold px-8 py-4 uppercase tracking-widest transition-all duration-300 rounded-sm cursor-pointer"
           >
             <Mail className="w-4 h-4" />
-            <span>Email Inquiries</span>
+            <span>Email Concierge</span>
           </a>
         </div>
 

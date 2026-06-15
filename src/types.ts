@@ -29,3 +29,38 @@ export interface Testimonial {
   text: string;
   role: string;
 }
+
+export interface SiteConfig {
+  siteName: string;
+  tagline: string;
+  heroTitle: string;
+  heroSubtitle: string;
+  heroButtonText: string;
+  heroImage: string;
+  aboutTitle: string;
+  aboutText1: string;
+  aboutText2: string;
+  aboutImage: string;
+  contactPhone: string;
+  contactEmail: string;
+}
+
+export interface Order {
+  id: string;
+  customerName: string;
+  customerPhone: string;
+  customerEmail: string;
+  customerAddress: string;
+  items: {
+    productId: string;
+    productName: string;
+    price: number;
+    quantity: number;
+  }[];
+  subtotal: number;
+  gst: number;
+  total: number;
+  date: string;
+  status: "pending" | "processed" | "shipped" | "cancelled";
+}
+

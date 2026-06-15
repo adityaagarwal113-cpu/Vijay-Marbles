@@ -1,6 +1,6 @@
 {
   "name": "Vijay Marbles",
-  "description": "Premium Bathroom & Kitchen Fixtures e-commerce showroom",
+  "description": "Explore luxury faucets, showers, brassware and bathroom accessories from Vijay Marbles",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

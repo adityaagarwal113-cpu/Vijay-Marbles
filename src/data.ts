@@ -1,32 +1,54 @@
-import { Product, Testimonial } from "./types";
+import { Product, Testimonial, SiteConfig, Order } from "./types";
+
+export const DEFAULT_SITE_CONFIG: SiteConfig = {
+  siteName: "VIJAY MARBLES",
+  tagline: "EST. 1998 • CHROME & BRASS ATELIER",
+  heroTitle: "Elevate Everyday Living",
+  heroSubtitle: "Curated premium bathroom and kitchen fixtures crafted for timeless elegance.",
+  heroButtonText: "SHOP COLLECTION",
+  heroImage: "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=1200", // Modern luxury bathroom background with brassware
+  aboutTitle: "Our Craftsmanship",
+  aboutText1: "At Vijay Marbles, we believe every fixture should be a blend of beauty and functionality. Our carefully curated collection of faucets, showers, and accessories brings refined craftsmanship into modern living spaces.",
+  aboutText2: "With over two decades of trust, we supply leading interior designers, architects, and premium homeowners with high-grade brassware and sanitary fittings. Each component undergoes meticulous design checks, boasting durable multilayer coatings designed to repel residue and resist tarnishing for a lifetime.",
+  aboutImage: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800", // High quality chrome tap / bathroom setting
+  contactPhone: "9229265644",
+  contactEmail: "helloakjain03@gmail.com"
+};
 
 export const INITIAL_PRODUCTS: Product[] = [
   {
     id: "long-body-bib-cock",
     name: "LONG BODY BIB COCK",
     price: 1250,
-    image: "https://images.unsplash.com/photo-1584622781514-f570d603e12e?auto=format&fit=crop&q=80&w=600",
-    description: "An elegant, long-body bib cock cast from high-grade solid virgin brass. Engineered with multi-layered luxury mirror chrome plating and our proprietary ceramic disc cartridges for leak-proof longevity.",
+    image: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=600",
+    description: "An elegant, heavy-duty brass bib cock featuring a prolonged spout reach. The multi-layer high-luster chrome finish ensures a durable mirror shine and prevents corrosion, while providing a soft aerated flow.",
     features: [
-      "Solid Lead-Free Brass Construction",
-      "Seven-Layer Mirror Finish Chrome Plating",
-      "Quarter-turn SilkControl Ceramic Disc Cartridge",
-      "High-performance honeycomb aerator for a splash-free, soft foam flow"
+      "100% Solid Extruded Brass Core Construction",
+      "Premium Multi-layered Mirror Chrome Finish",
+      "Integrated Water-saving Foam Flow Aerator",
+      "Quarter-turn Ceramic Disc Cartridge for Drip-free Performance"
     ],
     specs: {
-      Material: "Premium Virgin Brass",
+      Material: "Solid Extruded Brass",
       Finish: "Polished Mirror Chrome",
-      "Cartridge Life": "Up to 500,000 cycles",
-      Inlet: "1/2 inch BSP thread",
-      Warranty: "10 Years Limited Warranty"
+      InletSize: "1/2 inch BSP thread",
+      FlowRate: "8.5 Litres/min at 3 Bar pressure",
+      Warranty: "10-Year Leak-Free Valve Guarantee"
     },
     reviews: [
       {
-        id: "r1-1",
+        id: "r1",
         userName: "Amit Sharma",
         rating: 5,
-        comment: "Excellent finish and premium quality. Looks ultra luxury in my powder room.",
-        date: "2026-05-12"
+        comment: "Excellent finish and premium quality. Installed in our master bathroom and it looks incredibly luxurious.",
+        date: "2026-06-02"
+      },
+      {
+        id: "r2",
+        userName: "Suresh Gupta",
+        rating: 5,
+        comment: "Solid weight and very smooth lever motion. Definitely premium grade brassware.",
+        date: "2026-06-10"
       }
     ]
   },
@@ -34,28 +56,28 @@ export const INITIAL_PRODUCTS: Product[] = [
     id: "pillar-cock",
     name: "PILLAR COCK",
     price: 1450,
-    image: "https://images.unsplash.com/photo-1574634534894-89d7576c8259?auto=format&fit=crop&q=80&w=600",
-    description: "Designed for premium deck-mounted basins, this majestic pillar cock combines high-profile design with unmatched sensory feedback. The quarter-turn lever action represents the pinnacle of tactile ergonomics.",
+    image: "https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&q=80&w=600",
+    description: "A sleek, deck-mounted vertical pillar cock perfect for designer luxury washbasins. Features a high-arch goose-neck profile and effortless quarterly turn controls.",
     features: [
-      "Striking deck-mount architectural configuration",
-      "Anti-scale Aerator with self-cleaning capabilities",
-      "Ultra-precise hot/cold or ambient water control",
-      "Heavy weighted luxury brass base plate"
+      "Modern Minimalist Single-Handle Design",
+      "Eco-friendly Water-saving Neoperl Aerator",
+      "Lead-Free Eco-Brass Core Structure",
+      "Pristine Scratch-Resistant Outer Treatment"
     ],
     specs: {
-      Material: "Architectural Grade Brass",
-      Finish: "Warm Brass / High Gloss Polish",
-      Mounting: "Deck Mounted",
-      "Height of Spout": "150 mm",
-      Warranty: "10 Years Limited Warranty"
+      Material: "High-Grade Architectural Brass",
+      Finish: "Satin Chrome Overlay",
+      MountType: "Single Hole Deck Mounted",
+      Cartridge: "Premium Ceramic Disc",
+      Warranty: "10-Year Service Guarantee"
     },
     reviews: [
       {
-        id: "r2-1",
+        id: "r3",
         userName: "Priya Jain",
         rating: 5,
-        comment: "Looks beautiful in our new bathroom. The turn movement is incredibly smooth.",
-        date: "2026-06-01"
+        comment: "Looks beautiful in our new bathroom. Easy to keep spot-free and the flow is super gentle.",
+        date: "2026-05-28"
       }
     ]
   },
@@ -63,28 +85,28 @@ export const INITIAL_PRODUCTS: Product[] = [
     id: "sink-cock",
     name: "SINK COCK",
     price: 1850,
-    image: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&q=80&w=600",
-    description: "A premium kitchen workstation and wet bar masterpiece. Our high-arch swivel sink cock offers comprehensive basin coverage, turning modern meal preparation into an elegant culinary experience.",
+    image: "https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&q=80&w=600",
+    description: "A high-performance kitchen or utility sink tap engineered for premium homes. The 360-degree rotating swivel neck provides complete basin coverage with smooth, silent glide.",
     features: [
-      "360-degree high-angle smooth swivel range",
-      "EcoSmart Water Saving technology up to 40%",
-      "Smooth glide lever mechanism with progressive friction",
-      "Dual spray aerated comfort stream"
+      "360-degree Smooth Swivel High-Arch Spout",
+      "Dual-mode Spray & Stream Aerator with toggle control",
+      "Heavy-Duty Thick Wall Brass Housing for Lifelong Durability",
+      "Supplied with Premium Flexible Connectors"
     ],
     specs: {
-      Material: "Dezincification Resistant Brass",
-      Finish: "Double Nickel-Chrome Coat",
-      Mounting: "Wall Mounted with adjustable flange",
-      "Spout Reach": "220 mm",
-      Warranty: "7 Years Warranty"
+      Material: "Heavy Solid-Cast Core Brass",
+      Finish: "Warm Polished Chrome / Matte Accents",
+      Rotation: "Full 360-Degree Swivel Range",
+      WorkingPressure: "0.5 to 5.0 Bar operating capacity",
+      Warranty: "7-Year Showroom Warranty"
     },
     reviews: [
       {
-        id: "r3-1",
-        userName: "Suresh Patel",
+        id: "r4",
+        userName: "Rajesh K.",
         rating: 5,
-        comment: "Beautifully designed faucet. Makes my new modular kitchen looks so premium.",
-        date: "2026-04-20"
+        comment: "Very elegant design. The swivel is butter smooth and double aerator is extremely practical for big sinks.",
+        date: "2026-06-05"
       }
     ]
   },
@@ -92,20 +114,19 @@ export const INITIAL_PRODUCTS: Product[] = [
     id: "angle-cock",
     name: "ANGLE COCK",
     price: 950,
-    image: "https://images.unsplash.com/photo-1608248597481-496100c8c836?auto=format&fit=crop&q=80&w=600",
-    description: "The background hero of premium plumbing. This high-luster angle valve is built with durability in mind, acting as a reliable, decorative stop valve for high-end toilets, wash basins, and premium geysers.",
+    image: "https://images.unsplash.com/photo-1507652313519-d4e9174996dd?auto=format&fit=crop&q=80&w=600",
+    description: "High-grade forged brass quarter-turn angle valve designed for connecting water heaters, health faucets, and washbasins. Supplied with a matching premium heavy wall flange cover.",
     features: [
-      "Compact sculptural design with rounded contours",
-      "Tear-resistant silicone sealing gaskets for dual seal longevity",
-      "Wall flange plate included to conceal unsightly drill margins",
-      "Highly corrosion-resistant formulation"
+      "High-thickness Solid Brass Flange Plate",
+      "Quarter-turn High-Resistance Ceramic Disc Spindle",
+      "Extremely compact and neat flush wall-mount profile",
+      "Tested to withstand high water temperature up to 90°C"
     ],
     specs: {
-      Material: "Solid Extruded Brass",
-      Finish: "Chamber-Polished Chrome",
-      "Handle Type": "Architectural Cross Knob",
-      Pressure: "0.5 bar to 10 bar working range",
-      Warranty: "10 Years Limited Warranty"
+      Material: "Forged Heavy Brass Core",
+      Finish: "Ultra-Durable Triple Chrome Plating",
+      Connections: "1/2 inch Metric Inlet x 1/2 inch Outlet",
+      PressureRating: "PN-10 leakproof certification"
     },
     reviews: []
   },
@@ -113,28 +134,27 @@ export const INITIAL_PRODUCTS: Product[] = [
     id: "shower",
     name: "SHOWER",
     price: 2850,
-    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&q=80&w=600",
-    description: "A transformative, sensory wellness shower head that recreates natural luxury elements. Featuring custom silicon nozzles engineered to sustain equalized fluid pressure across every active droplet.",
+    image: "https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&q=80&w=600",
+    description: "An incredibly immersive overhead rain showerhead with premium self-cleaning silicon nozzles. Designed with air-injection technology to deliver standard luxury pressure even with low inlet pressure.",
     features: [
-      "Overhead 8-inch wide luxury rain shower face",
-      "Anti-clog self-cleaning silicon spray channels",
-      "Integrated swivel ball joint allows 15-degree angle adjustments",
-      "Laminar flow optimizer creating full, satisfying droplets"
+      "Generous 8-inch Slim Rain Shower Faceplate",
+      "Self-cleaning German Silicon Anti-calcification Nozzles",
+      "Includes Heavy Brass Shower Arm & Threaded Wall escutcheon",
+      "Oxygen-enriched droplets for a soothing spa experience"
     ],
     specs: {
-      Material: "Reinforced Brass & High-Impact Polymers",
-      Finish: "Premium Luster Plating",
-      Mounting: "Wall or Ceiling Shower Arm compatible",
-      FlowRate: "9.5 Litres per min at 3 bar",
-      Warranty: "5 Years Rainware Warranty"
+      Material: "Premium Grade SS-304 Face & Heavy Brass Swivel Joint",
+      Finish: "Mirror-Like Chrome Electroplating",
+      Dimensions: "200mm x 200mm Square Shape",
+      FlowRegulator: "In-built 9.5 LPM flow saver pre-installed"
     },
     reviews: [
       {
-        id: "r5-1",
-        userName: "Rajesh K.",
+        id: "r5",
+        userName: "Ananya Deshpande",
         rating: 5,
-        comment: "Absolutely majestic shower. Feeds water so softly, the design is elite.",
-        date: "2026-05-30"
+        comment: "The rain flow is incredibly soothing. Feels like a premium hotel spa. No clogging or scaling after months of use.",
+        date: "2026-06-12"
       }
     ]
   },
@@ -142,20 +162,19 @@ export const INITIAL_PRODUCTS: Product[] = [
     id: "towel-rod",
     name: "TOWEL ROD",
     price: 1150,
-    image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=600",
-    description: "A minimal, beautiful hardware piece that brings order and high-end bathroom luxury to life. Built with structural concealed anchors to maintain a smooth, sleek horizontal outline.",
+    image: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&q=80&w=600",
+    description: "Sleek, horizontal metal towel bar styled to complement modern high-end bathroom suites. Solid concealed wall fasteners ensure absolute structural stability.",
     features: [
-      "Heavy load support solid mounting studs",
-      "Fully moisture proof and steam proof chrome formulation",
-      "24 inches of premium towel display surface",
-      "Perfect color match to Vijay Marbles faucet collection"
+      "Double concealed structural screw mounting brackets",
+      "Steam-proof and rust-proof high polished plating",
+      "Sleek 24-inch length offers generous drying space",
+      "Smooth round corners protect soft premium linen and accessories"
     ],
     specs: {
-      Material: "Solid Heavy Brass Alloy",
-      Finish: "Rust-Resistant Multi-layered Chrome",
-      Length: "600 mm (24 inches)",
-      Installation: "Wall mount with hex expansion screws",
-      Warranty: "5 Years Polish Warranty"
+      Material: "Heavy-Gauge Structural Alloys & Brass Posts",
+      Finish: "Glossy Protective Chrome Seal",
+      OverallLength: "24 inches (610mm)",
+      MaxWeightCap: "Strictly rated up to 15kg load"
     },
     reviews: []
   },
@@ -163,53 +182,93 @@ export const INITIAL_PRODUCTS: Product[] = [
     id: "soap-dispenser",
     name: "SOAP DISPENSER",
     price: 850,
-    image: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&q=80&w=600",
-    description: "The ideal sink accessory for clean luxury vanity setups. Eliminates soap bottle clutter, providing smooth, tactile fluid release from a solid metal pump head with premium return spring dampening.",
+    image: "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&q=80&w=600",
+    description: "A premium designer wall-mounted liquid soap holder. Styled from frosted tempered heavy glass and paired with an elegant solid brass pump head.",
     features: [
-      "Deck mounted architectural integration",
-      "Anti-corrosive internal fluid suction tubing",
-      "Refill easily from the top without crawling under deck",
-      "Generous 350ml thick-gauge container capacity"
+      "Easy-press solid brass core pump mechanism",
+      "Rustproof and non-dripping interior dispenser tube",
+      "Frosted elegant heavy-duty glass container",
+      "Saves sink space with secure sleek wall-bracket mount"
     ],
     specs: {
-      Material: "Polished Stainless Steel & Brass Pump Head",
-      Finish: "Premium Chromium Polish",
-      Capacity: "350 ml",
-      "Desk Hole Cutout": "25 - 35 mm required",
-      Warranty: "2 Years Pump Mechanism Warranty"
+      Material: "Tempered Frosted Vessel & Brass Pump Fitting",
+      Finish: "Polished Chrome / Satin Rim Accent",
+      Capacity: "350 ml storage volume",
+      MountStyle: "Dual-anchor wall mount"
     },
-    reviews: [
-      {
-        id: "r7-1",
-        userName: "Ananya Mehta",
-        rating: 5,
-        comment: "Extremely tidy pump. Matches our hotel-like bathroom perfectly.",
-        date: "2026-06-11"
-      }
-    ]
+    reviews: []
   }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: "t1",
-    userName: "Vikram Malhotra",
+    userName: "Amit Sharma",
     rating: 5,
-    text: "Vijay Marbles has transformed our new penthouse into a premium private sanctuary. The faucets have that unique Jaquar-esque and Kohler-level heavy weight, incredible water flow, and timeless elegance. Highly recommended for premium homes.",
-    role: "Luxury Homeowner, Mumbai"
+    text: "Vijay Marbles completely transformed our villa bathrooms. The chrome finish on the pillar cocks is literally mirror-like and feels so heavy and solid in hand. A truly premium brand with flawless service.",
+    role: "Architect & Partner, Studio V"
   },
   {
     id: "t2",
-    userName: "Meera Sen",
+    userName: "Priya Jain",
     rating: 5,
-    text: "As an interior architect, I always struggle to source brassware that is both artistically minimal and functionally flawless. Vijay Marbles fixtures represent premium craftsmanship at its finest. The mirror chrome finish is pristine.",
-    role: "Lead Interior Designer, Delhi"
+    text: "The matte sink cocks perform flawlessly, turning silently with absolute ease. Finding this level of designer brassware at honest prices is rare. Highly recommended for premium homes.",
+    role: "Interior Stylist, Mumbai"
   },
   {
     id: "t3",
-    userName: "Rohan Singhal",
+    userName: "Rohan Kapoor",
     rating: 5,
-    text: "We used Vijay Marbles faucets and shower accessories for our boutique resort project. Guests frequently compliment the sleek, modern design and the organic rain-like flow of the showers. Excellent post-sales dedication and quality.",
-    role: "Managing Director, Singhal Resorts"
+    text: "Their concierge customized fitting sizes for our unique rain shower pipes without any delay. The durability and finish are leagues ahead of common retail alternatives. Five-star experience.",
+    role: "Luxury Homeowner, Pune"
+  }
+];
+
+export const INITIAL_ORDERS: Order[] = [
+  {
+    id: "ORD-9841",
+    customerName: "Aditya Agarwal",
+    customerPhone: "9229265644",
+    customerEmail: "adityaagarwal113@gmail.com",
+    customerAddress: "Flat 102, Shanti Kutir, Link Road, Bandra West, Mumbai, MH - 400050",
+    items: [
+      {
+        productId: "long-body-bib-cock",
+        productName: "LONG BODY BIB COCK",
+        price: 1250,
+        quantity: 2
+      },
+      {
+        productId: "shower",
+        productName: "SHOWER",
+        price: 2850,
+        quantity: 1
+      }
+    ],
+    subtotal: 5350,
+    gst: 267.5,
+    total: 5617.5,
+    date: "2026-06-14",
+    status: "pending"
+  },
+  {
+    id: "ORD-9524",
+    customerName: "Anjali Mehta",
+    customerPhone: "+91 98251 12345",
+    customerEmail: "anjali.mehta@yahoo.com",
+    customerAddress: "Saraswati Bungalow, Near Judges Bungalow Road, Bodakdev, Ahmedabad, GJ - 380054",
+    items: [
+      {
+        productId: "sink-cock",
+        productName: "SINK COCK",
+        price: 1850,
+        quantity: 1
+      }
+    ],
+    subtotal: 1850,
+    gst: 92.5,
+    total: 1942.5,
+    date: "2026-06-12",
+    status: "processed"
   }
 ];

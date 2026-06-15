@@ -1,29 +1,31 @@
 import { motion } from "motion/react";
-import { ArrowDown, Flame, ShieldCheck } from "lucide-react";
+import { ArrowDown } from "lucide-react";
+import { SiteConfig } from "../types";
 
 interface HeroProps {
   onShopClick: () => void;
   onExploreClick: () => void;
+  siteConfig: SiteConfig;
 }
 
-export default function Hero({ onShopClick, onExploreClick }: HeroProps) {
+export default function Hero({ onShopClick, onExploreClick, siteConfig }: HeroProps) {
   return (
     <section
       id="hero-banner"
-      className="relative w-full h-[95vh] flex items-center justify-center overflow-hidden"
+      className="relative w-full h-[95vh] flex items-center justify-center overflow-hidden bg-brand-bg-sec"
     >
       {/* Background image container with premium zoom animation */}
       <div className="absolute inset-0 z-0">
         <motion.img
-          initial={{ scale: 1.05, opacity: 0.85 }}
+          initial={{ scale: 1.05, opacity: 0.8 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2.2, ease: "easeOut" }}
-          src="https://images.unsplash.com/photo-1620626011761-996317b6979a?auto=format&fit=crop&q=80&w=1600"
-          alt="Premium Bathroom Showroom Background"
+          src={siteConfig.heroImage}
+          alt={`${siteConfig.siteName} Premium Collection Background`}
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center"
         />
-        {/* Soft luxury warm beige / champagne overlay */}
+        {/* Soft luxury warm beige overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-brand-bg/95 via-brand-bg/75 to-transparent blend-multiply" />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-brand-bg to-transparent" />
       </div>
@@ -31,16 +33,16 @@ export default function Hero({ onShopClick, onExploreClick }: HeroProps) {
       {/* Hero Content Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full flex flex-col items-start mt-12">
         <div className="max-w-2xl">
-          {/* Subtle luxurious tagline */}
+          {/* Tagline */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex items-center space-x-2.5 mb-5 md:mb-6"
           >
-            <div className="h-[1px] w-8 bg-brand-accent" />
-            <span className="text-xs uppercase tracking-[0.3em] font-sans font-semibold text-brand-accent">
-              Architectural Brassware Showroom
+            <div className="h-[1.5px] w-8 bg-brand-accent" />
+            <span className="text-xs uppercase tracking-[0.25em] font-sans font-semibold text-brand-accent">
+              {siteConfig.tagline}
             </span>
           </motion.div>
 
@@ -49,10 +51,9 @@ export default function Hero({ onShopClick, onExploreClick }: HeroProps) {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-5xl md:text-7xl lg:text-[76px] tracking-tight font-medium text-brand-text mb-6 md:mb-8 leading-[1.08]"
+            className="font-serif text-5xl md:text-7xl lg:text-[72px] tracking-tight font-medium text-brand-text mb-6 md:mb-8 leading-[1.08]"
           >
-            Elevate <br className="hidden md:inline" />
-            Everyday Living
+            {siteConfig.heroTitle}
           </motion.h1>
 
           {/* Subheading */}
@@ -62,7 +63,7 @@ export default function Hero({ onShopClick, onExploreClick }: HeroProps) {
             transition={{ duration: 1.0, delay: 0.4, ease: "easeOut" }}
             className="text-base md:text-xl font-sans text-brand-text-sec leading-relaxed mb-10 md:mb-12 font-light"
           >
-            Curated premium bathroom and kitchen fixtures crafted for timeless elegance, tactile sensory perfection, and lifelong endurance. Specially handpicked for elite homeowners and interior architects.
+            {siteConfig.heroSubtitle}
           </motion.p>
 
           {/* Buttons */}
@@ -75,30 +76,30 @@ export default function Hero({ onShopClick, onExploreClick }: HeroProps) {
             <button
               id="hero-shop-now-btn"
               onClick={onShopClick}
-              className="bg-brand-accent hover:bg-brand-accent-hover text-brand-bg font-sans font-medium text-sm py-4 px-8 tracking-widest uppercase transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 rounded-sm"
+              className="bg-brand-accent hover:bg-brand-accent-hover text-white font-sans font-medium text-sm py-4 px-8 tracking-widest uppercase transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5 rounded-sm cursor-pointer"
             >
-              Shop Collection
+              {siteConfig.heroButtonText}
             </button>
             <button
               id="hero-explore-craft-btn"
               onClick={onExploreClick}
-              className="border border-brand-accent hover:border-brand-accent-hover text-brand-accent hover:text-brand-accent-hover font-sans font-medium text-sm py-4 px-8 tracking-widest uppercase transition-all duration-300 hover:bg-brand-bg-sec rounded-sm"
+              className="border border-brand-accent hover:border-brand-accent-hover text-brand-accent hover:text-brand-accent-hover font-sans font-medium text-sm py-4 px-8 tracking-widest uppercase transition-all duration-300 hover:bg-brand-bg-sec rounded-sm cursor-pointer"
             >
-              Explore Craftsmanship
+              Explore Philosophy
             </button>
           </motion.div>
         </div>
       </div>
 
-      {/* Floating features quick summary overlay at the bottom right */}
+      {/* Floating features helper at the bottom right */}
       <div className="absolute right-12 bottom-12 hidden lg:flex items-center space-x-8 text-xs font-mono tracking-wider text-brand-text/75 bg-brand-card/75 backdrop-blur-md p-4 px-6 border border-brand-border rounded-sm shadow-sm">
         <div className="flex items-center">
           <span className="w-2 h-2 rounded-full bg-brand-accent mr-2 inline-block"></span>
-          VIRGIN BRASS CORES
+          ARTISANAL HANDLOOMS
         </div>
         <div className="flex items-center">
           <span className="w-2 h-2 rounded-full bg-brand-accent mr-2 inline-block"></span>
-          10-YEAR WARRANTY
+          ORGANIC SILK WEAVES
         </div>
       </div>
 

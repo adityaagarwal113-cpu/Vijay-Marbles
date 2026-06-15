@@ -1,6 +1,11 @@
 import { Mail, Phone, MapPin, ArrowUp, ArrowRight, ShieldCheck } from "lucide-react";
+import { SiteConfig } from "../types";
 
-export default function Footer() {
+interface FooterProps {
+  siteConfig: SiteConfig;
+}
+
+export default function Footer({ siteConfig }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   const handleScrollTop = () => {
@@ -15,24 +20,24 @@ export default function Footer() {
           {/* Brand Intro Column */}
           <div className="lg:col-span-4 flex flex-col items-start">
             <h3 className="font-serif text-2xl tracking-widest text-white uppercase font-bold mb-3">
-              Vijay Marbles
+              {siteConfig.siteName}
             </h3>
-            <p className="text-[9px] tracking-[0.4em] text-brand-accent uppercase mb-6 font-medium">
-              Timeless Hardware Showroom
+            <p className="text-[9px] tracking-[0.25em] text-brand-accent uppercase mb-6 font-medium">
+              {siteConfig.tagline}
             </p>
             <p className="text-xs text-[#6B6B6B]/80 hover:text-[#E7DED3]/75 transition-colors leading-relaxed font-light mb-8">
-              At Vijay Marbles, we believe every fixture should be a blend of beauty and functionality. We curated a state-of-the-art collection of bathroom faucet, showers, and accessories to bring timeless refined craftsmanship into elite modern homes.
+              {siteConfig.aboutText1}
             </p>
             <div className="flex items-center space-x-2 text-[10px] tracking-widest text-[#B99772] uppercase font-mono">
               <ShieldCheck className="w-4 h-4 text-brand-accent" />
-              <span>Verified Jaquar & Kohler Partner</span>
+              <span>100% Handcrafted Artisan Outfits</span>
             </div>
           </div>
 
           {/* Quick Links Column */}
           <div className="lg:col-span-3 lg:col-start-6">
             <h4 className="font-serif text-sm uppercase tracking-widest text-white font-semibold mb-6">
-              Quick Showroom Links
+              Quick Boutique Links
             </h4>
             <ul className="space-y-4 text-xs font-light text-[#E7DED3]/80">
               <li>
@@ -41,7 +46,7 @@ export default function Footer() {
                   className="hover:text-brand-accent transition-colors duration-300 flex items-center group cursor-pointer"
                 >
                   <ArrowRight className="w-3.5 h-3.5 mr-2 opacity-0 group-hover:opacity-100 transition-all duration-300 -ml-5 group-hover:ml-0 text-brand-accent" />
-                  <span>Browse Collections</span>
+                  <span>Browse Showcase Catalog</span>
                 </a>
               </li>
               <li>
@@ -50,7 +55,7 @@ export default function Footer() {
                   className="hover:text-brand-accent transition-colors duration-300 flex items-center group cursor-pointer"
                 >
                   <ArrowRight className="w-3.5 h-3.5 mr-2 opacity-0 group-hover:opacity-100 transition-all duration-300 -ml-5 group-hover:ml-0 text-brand-accent" />
-                  <span>Our Craftsmanship</span>
+                  <span>Our Craft & Narrative</span>
                 </a>
               </li>
               <li>
@@ -59,7 +64,7 @@ export default function Footer() {
                   className="hover:text-brand-accent transition-colors duration-300 flex items-center group cursor-pointer"
                 >
                   <ArrowRight className="w-3.5 h-3.5 mr-2 opacity-0 group-hover:opacity-100 transition-all duration-300 -ml-5 group-hover:ml-0 text-brand-accent" />
-                  <span>Services & Finishes</span>
+                  <span>Signature Merits</span>
                 </a>
               </li>
               <li>
@@ -68,7 +73,7 @@ export default function Footer() {
                   className="hover:text-brand-accent transition-colors duration-300 flex items-center group cursor-pointer"
                 >
                   <ArrowRight className="w-3.5 h-3.5 mr-2 opacity-0 group-hover:opacity-100 transition-all duration-300 -ml-5 group-hover:ml-0 text-brand-accent" />
-                  <span>Client Testimonials</span>
+                  <span>Bespoke Testimonials</span>
                 </a>
               </li>
             </ul>
@@ -77,34 +82,34 @@ export default function Footer() {
           {/* Contact Details Column */}
           <div className="lg:col-span-4">
             <h4 className="font-serif text-sm uppercase tracking-widest text-white font-semibold mb-6">
-              Showroom Inquiries
+              Concierge Inquiries
             </h4>
             <ul className="space-y-5 text-xs text-[#E7DED3]/80 font-light">
               <li className="flex items-start">
                 <MapPin className="w-4 h-4 mr-3 text-brand-accent flex-shrink-0 mt-0.5" />
                 <span className="leading-relaxed">
-                  Vijay Marbles Premium Showroom, Architectural Fittings Wing, India
+                  {siteConfig.siteName} Premium Atelier, India
                 </span>
               </li>
               <li>
                 <a
-                  href="mailto:helloakjain03@gmail.com"
+                  href={`mailto:${siteConfig.contactEmail}`}
                   className="flex items-center hover:text-brand-accent transition-colors duration-300"
                 >
                   <Mail className="w-4 h-4 mr-3 text-brand-accent flex-shrink-0" />
-                  <span className="font-semibold underline underline-offset-4">
-                    helloakjain03@gmail.com
+                  <span className="font-semibold underline underline-offset-4 font-mono">
+                    {siteConfig.contactEmail}
                   </span>
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:9229265644"
+                  href={`tel:${siteConfig.contactPhone}`}
                   className="flex items-center hover:text-brand-accent transition-colors duration-300"
                 >
                   <Phone className="w-4 h-4 mr-3 text-brand-accent flex-shrink-0" />
-                  <span className="font-semibold text-[#E7DED3] hover:text-brand-accent">
-                    +91 922926 5644
+                  <span className="font-semibold text-[#E7DED3] hover:text-brand-accent font-mono">
+                    {siteConfig.contactPhone}
                   </span>
                 </a>
               </li>
@@ -116,12 +121,12 @@ export default function Footer() {
         {/* Bottom Bar: Copyright/Tribute */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#6B6B6B] font-mono leading-relaxed">
           <p className="text-center sm:text-left mb-4 sm:mb-0">
-            © {currentYear} Vijay Marbles. All rights reserved. Designed for Luxury & Perfection.
+            © {currentYear} {siteConfig.siteName}. All rights reserved. Designed for Slow Fashion & Perfection.
           </p>
           <div className="flex items-center space-x-6">
             <button
               onClick={handleScrollTop}
-              className="flex items-center space-x-1.5 text-brand-accent hover:text-brand-accent-hover transition-colors font-sans font-medium uppercase tracking-widest text-[9px] focus:outline-none"
+              className="flex items-center space-x-1.5 text-brand-accent hover:text-brand-accent-hover transition-colors font-sans font-medium uppercase tracking-widest text-[9px] focus:outline-none cursor-pointer"
             >
               <span>Back To Top</span>
               <ArrowUp className="w-3.5 h-3.5" />
